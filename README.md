@@ -1,52 +1,52 @@
-## PinkAntiBot Contract Address:
+## عنوان عقد PinkAntiBot:
 
-1. MAINNET: 0xf4f071EB637b64fC78C9eA87DaCE4445D119CA35
-2. BSC: 0x8EFDb3b642eb2a20607ffe0A56CFefF6a95Df002
+1.1. MAINNET: 0xf4f071EB637b64fC78C9eA87DaCE4445D119CA35
+2. BSC: 0x8EFDb3b642eb2a20607ffe0A56CFF6a95Df002
 3. BSC_TESTNET: 0xbb06F5C7689eA93d9DeACCf4aF8546C4Fe0Bf1E5
 4. MATIC: 0x56a79881b65B03F27b088B753B6c128485642FC3
-5. KCC_MAINNET: 0x2A7F08C820f3382D38B855ba59ad26444938a2b5
-6. AVAX: 0x18F349aD12d7d7f029B3b22e0B01c6D88a0D2066
-7. FTM: 0xcA461AcF6A9E68FA6D53410eba43cefde7dF5466
+5. KCC_MAINNET: 0x2A7F08C820f3382D38B855ba59ad2644494938a2b5
+6. AVAX: 0x18F349aD12d7 f029B3b22e0B01c6D88a0D2066
+ FTM: 0xcA461AcF6A9E68FA6D53410eba43cefde7dF5466
 8. CRONOS: 0x785A195F7b6a0dDaf7E41EBcBddE7a98F4Cb24A9
 
-## PinkAntiBot integration guide
+## دليل التكامل PinkAntiBot
 
-1. Add this interface to your codebase:
+1.  إضافة هذه الواجهة إلى قاعدة التعليمات البرمجية الخاصة بك:
 
-`IPinkAntiBot.sol`
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity >=0.5.0;
+'IPinkAntiBot.sol'
+"'الصلابة.
+// SPDX-License-معرف: MIT
+صلابة براغما > =0.5.0;
 
-interface IPinkAntiBot {
-  function setTokenOwner(address owner) external;
+واجهة IPinkAntiBot {
+ وظيفة setTokenOwner (مالك العنوان) خارجي ؛ 
 
-  function onPreTransferCheck(
-    address from,
-    address to,
-    uint256 amount
-  ) external;
+ وظيفة علىPreTransferCheck ( 
+ العنوان من، 
+ العنوان إلى، 
+ Uint256 (المبلغ) 
+ ) الخارجية؛ 
 }
-```
+"'
 
-2. Update your token contract:
+2. تحديث عقد الرمز المميز الخاص بك:
 
-```diff
-+import "path/to/IPinkAntiBot.sol";
+" (ديف)
+++ استيراد "مسار / إلى / IpinkAntiBot.sol" ؛
 
-contract MyToken {
-+ IPinkAntiBot public pinkAntiBot;
+عقد MyToken {
++ IPinkAntiBot العامة الورديAntiBot.
 
-  constructor(
-    string memory name_,
-    string memory symbol_,
-    uint8 decimals_,
-    uint256 totalSupply_,
-+   address pinkAntiBot_ 
-  ) {
-    ... omitted for clarity
+ منشئ ( 
+    اسم ذاكرة السلسلة_,    
+  رمز ذاكرة السلسلة_,  
+ uint8 الكسور العشرية_, 
+ uint256 مجموعالتوريد_, 
++ العنوان الورديAntiBot_ 
+ ) { 
+ ... حذفت للوضوح 
 
-    // Create an instance of the PinkAntiBot variable from the provided address
+ // إنشاء مثيل لمتغير PinkAntiBot من العنوان المقدم 
 +   pinkAntiBot = IPinkAntiBot(pinkAntiBot_);
     // Register the deployer to be the token owner with PinkAntiBot. You can
     // later change the token owner in the PinkAntiBot contract
