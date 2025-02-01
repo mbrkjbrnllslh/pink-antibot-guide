@@ -1,20 +1,20 @@
-## PinkAntiBot Contract Address:
+## عنوان عقد PinkAntiBot:
 
 1. MAINNET: 0xf4f071EB637b64fC78C9eA87DaCE4445D119CA35
 2. BSC: 0x8EFDb3b642eb2a20607ffe0A56CFefF6a95Df002
 3. BSC_TESTNET: 0xbb06F5C7689eA93d9DeACCf4aF8546C4Fe0Bf1E5
 4. MATIC: 0x56a79881b65B03F27b088B753B6c128485642FC3
-5. KCC_MAINNET: 0x2A7F08C820f3382D38B855ba59ad26444938a2b5
-6. AVAX: 0x18F349aD12d7d7f029B3b22e0B01c6D88a0D2066
+5. KCC_MAINNET: 0x2A7F08C820f3382D38B855ba59ad2644494938a2b5
+6. AVAX: 0x18F349aD12d7d7d7f029B3b22e0B01c6D88a0D2066
 7. FTM: 0xcA461AcF6A9E68FA6D53410eba43cefde7dF5466
 8. CRONOS: 0x785A195F7b6a0dDaf7E41EBcBddE7a98F4Cb24A9
 
-## PinkAntiBot integration guide
+## دليل التكامل PinkAntiBot
 
-1. Add this interface to your codebase:
+1. إضافة هذه الواجهة إلى قاعدة التعليمات البرمجية الخاصة بك:
 
-`IPinkAntiBot.sol`
-```solidity
+'IPinkAntiBot.sol`
+"الصلابة
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.5.0;
 
@@ -27,12 +27,12 @@ interface IPinkAntiBot {
     uint256 amount
   ) external;
 }
-```
+"'
 
 2. Update your token contract:
 
 ```diff
-+import "path/to/IPinkAntiBot.sol";
++ استيراد "مسار / إلى / IpinkAntiBot.sol" ؛
 
 contract MyToken {
 + IPinkAntiBot public pinkAntiBot;
@@ -70,7 +70,7 @@ contract MyToken {
 
 ![alt text](https://github.com/pinkmoonfinance/pink-antibot-guide/blob/main/pink-anti-bot-dashboard.png)
 
-4. (Optional): If you want more control over how `PinkAntiBot` is enabled or disabled, you can do it inside your contract instead of relying on `PinkAntiBot` contract's configuration:
+4.  (اختياري): إذا كنت تريد المزيد من السيطرة على كيفية  `PinkAntiBot` is enabled or disabled, you can do it inside your contract instead of relying on `PinkAntiBot` contract's configuration:
 
 
 ```diff
