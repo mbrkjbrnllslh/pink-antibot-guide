@@ -1,72 +1,70 @@
-## PinkAntiBot Contract Address:
+## عنوان عقد PinkAntiBot:
 
 1. MAINNET: 0xf4f071EB637b64fC78C9eA87DaCE4445D119CA35
 2. BSC: 0x8EFDb3b642eb2a20607ffe0A56CFefF6a95Df002
 3. BSC_TESTNET: 0xbb06F5C7689eA93d9DeACCf4aF8546C4Fe0Bf1E5
-4. MATIC: 0x56a79881b65B03F27b088B753B6c128485642FC3
+4. ماتيك: 0x56a79881b65B03F27b088B753B6c128485642FC3
 5. KCC_MAINNET: 0x2A7F08C820f3382D38B855ba59ad26444938a2b5
-6. AVAX: 0x18F349aD12d7d7f029B3b22e0B01c6D88a0D2066
+6. AVAX: 0x18F349AD12d7d7f029B3b22e0B01c6D88a0D2066
 7. FTM: 0xcA461AcF6A9E68FA6D53410eba43cefde7dF5466
 8. CRONOS: 0x785A195F7b6a0dDaf7E41EBcBddE7a98F4Cb24A9
 
-## PinkAntiBot integration guide
+##  دليل التكامل PinkAntiBot
 
-1. Add this interface to your codebase:
+1.   أضف هذه الواجهة إلى قاعدة التعليمات البرمجية الخاصة بك: 
 
-`IPinkAntiBot.sol`
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity >=0.5.0;
+"IPinkAntiBot.sol"
+"'صلابة.
+// SPDX-License-Identifier: معهد ماساتشوستس للتكنولوجيا
+براغما صلابة >=0.5.0;
 
-interface IPinkAntiBot {
-  function setTokenOwner(address owner) external;
+واجهة IPinkAntiBot {
+  دالة setTokenOwner (مالك العنوان) خارجي؛  
 
-  function onPreTransferCheck(
-    address from,
-    address to,
-    uint256 amount
-  ) external;
+ وظيفة على PreTransferCheck ( 
+ العنوان من،10,000,0000
+ ) الخارجية؛ 
 }
-```
+"'
 
-2. Update your token contract:
+2.  تحديث عقد الرمز المميز الخاص بك:
 
-```diff
-+import "path/to/IPinkAntiBot.sol";
+"الدافع.
++   استيراد "المسار / إلى / IPinkAntiBot.sol" ؛ 
 
-contract MyToken {
-+ IPinkAntiBot public pinkAntiBot;
+عقد MyToken {
++ IPinkAntiBot العامة الورديAntiBot;
 
-  constructor(
-    string memory name_,
-    string memory symbol_,
-    uint8 decimals_,
-    uint256 totalSupply_,
-+   address pinkAntiBot_ 
-  ) {
-    ... omitted for clarity
+ المنشئ ( 
+ اسم ذاكرة الخيط_, 
+ رمز ذاكرة الوتر_، 
+ UT8 الكسور العشرية_، 
+ uint256 إجمالي العرض_، 
++ عنوان الورديAntiBot_ 
+ ) { 
+ ... حذفت من أجل الوضوح 
 
-    // Create an instance of the PinkAntiBot variable from the provided address
-+   pinkAntiBot = IPinkAntiBot(pinkAntiBot_);
-    // Register the deployer to be the token owner with PinkAntiBot. You can
-    // later change the token owner in the PinkAntiBot contract
-+   pinkAntiBot.setTokenOwner(msg.sender);
-  }
+ // إنشاء مثال لمتغير PinkAntiBot من العنوان المقدم 
++ الوردي AntiBot = IPinkAntiBot (pinkAntiBot_) ؛ 
+ // سجل الموزع ليكون مالك الرمز المميز مع PinkAntiBot. يمكنك. 
+ // في وقت لاحق تغيير مالك الرمز المميز في عقد PinkAntiBot 
++ الورديAntiBot.setمالك الرمز المميز (msg.sender) ؛ 
+ } 
 
-  // Inside ERC20's _transfer function:
-  function _transfer(
-    address sender,
-    address recipient,
-    uint256 amount
-  ) internal virtual {
-    require(sender != address(0), "ERC20: transfer from the zero address");
-    require(recipient != address(0), "ERC20: transfer to the zero address");
-+   pinkAntiBot.onPreTransferCheck(sender, recipient, amount);
-  }
+ // داخل وظيفة _النقل في ERC20: 
+ وظيفة _النقل ( 
+ مرسل العنوان، 
+ مستلم العنوان، 
+ مبلغ UT256 
+ ) الظاهري الداخلي { 
+ تتطلب (المرسل!= العنوان (0) ، "ERC20: نقل من عنوان الصفر") ؛ 
+ تتطلب (المتلقي!= العنوان (0) ، "ERC20: نقل إلى العنوان صفر") ؛ 
++ pinkAntiBot.onPreTransferCheck (المرسل، المتلقي، المبلغ) ؛ 
+ } 
 }
-```
+"'
 
-3. Visit https://www.pinksale.finance/#/antibot, update your settings. After that please enable Pink Anti-Bot (Pay 1 BNB fee at first time)
+3. زيارة https://www.pinksale.finance/#/antibot، تحديث الإعدادات الخاصة بك. بعد ذلك، يرجى تمكين Pink Anti-Bot (دفع رسوم 1 BNB في المرة الأولى)
 
 ![alt text](https://github.com/pinkmoonfinance/pink-antibot-guide/blob/main/pink-anti-bot-dashboard.png)
 
